@@ -8,6 +8,9 @@ const port = process.env.PORT || 3001;
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
+// Calling database
+require("./database/db");
+
 // api route
 const apiRouter = require("./api/routes/api");
 app.use("/routes", apiRouter);
