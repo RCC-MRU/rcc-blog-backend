@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 const morgan = require("morgan");
 const port = process.env.PORT || 3001;
 
@@ -13,7 +13,7 @@ require("./database/db");
 
 // api route
 const apiRouter = require("./api/routes/api");
-app.use("/routes", apiRouter);
+app.use("/routes", apiRouter); 
 
 // root route
 app.use("/", (req, res) => {
