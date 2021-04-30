@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const port = process.env.PORT || 3001;
 
@@ -8,12 +8,18 @@ const port = process.env.PORT || 3001;
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
-// Calling database
-require("./database/db");
+// Calling database and authenticate
+const db = require("./database/db");
+db.connect((err) => {
+  if (err) {
+    throw err;
+  }
+  console.log("MYSQL database connected");
+});
 
 // api route
 const apiRouter = require("./api/routes/api");
-app.use("/routes", apiRouter); 
+app.use("/routes", apiRouter);
 
 // root route
 app.use("/", (req, res) => {
