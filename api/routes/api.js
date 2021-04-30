@@ -54,7 +54,7 @@ router.get("/showPopular", (req, res) => {
 router.get("/showLatest", (req, res) => {
   let sql = `SELECT * FROM blog ORDER BY createdAt DESC`;
 
-  let query = db.query(sql, (err, result) => {
+  const query = db.query(sql, (err, result) => {
     if (err) throw err;
     res.send(result);
   });
