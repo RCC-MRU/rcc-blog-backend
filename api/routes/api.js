@@ -30,4 +30,12 @@ router.get("/showSingleBlogPost/:slug", (req, res) => {
   })
 });
 
+router.get("/showBlogsByCategory/:category", (req,res)=>{
+  let sql= `SELECT * FROM blog WHERE category='${req.params.category}'`;
+
+  connection.query(sql,(err,result)=>{
+    if (err) throw err;
+    res.send(result);
+  })
+});
 module.exports = router;
