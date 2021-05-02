@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../../database/db");
+const db = require("../database/db");
 
-// This route is to show all blogpost details
+// show all blog posts
 router.get("/showAllBlogPost", (req, res) => {
   let sql = `SELECT * FROM blog `;
 
@@ -14,7 +14,7 @@ router.get("/showAllBlogPost", (req, res) => {
   console.log(query.sql);
 });
 
-// This route is to show single blog post where the slug is passed dynamically
+// show posts by slug
 router.get("/showSingleBlogPost/:slug", (req, res) => {
   let sql = `SELECT * FROM blog WHERE slug = '${req.params.slug}'`;
 
@@ -26,7 +26,7 @@ router.get("/showSingleBlogPost/:slug", (req, res) => {
   console.log(query.sql);
 });
 
-// This route is to show blog posts by dynamic category
+// show posts by category
 router.get("/showBlogsByCategory/:category", (req, res) => {
   let sql = `SELECT * FROM blog WHERE category = '${req.params.category}'`;
 
@@ -38,9 +38,9 @@ router.get("/showBlogsByCategory/:category", (req, res) => {
   console.log(query.sql);
 });
 
-// This route is for popular cards
+// show popular posts
 router.get("/showPopular", (req, res) => {
-  let sql = `SELECT * FROM blog ORDER BY likes DESC`;
+  let sql = `SELECT * FROM blog ORDER BY viewCounter DESC`;
 
   let query = db.query(sql, (err, result) => {
     if (err) throw err;
@@ -50,7 +50,7 @@ router.get("/showPopular", (req, res) => {
   console.log(query.sql);
 });
 
-// This route is to show latest posts
+// show latest posts
 router.get("/showLatest", (req, res) => {
   let sql = `SELECT * FROM blog ORDER BY createdAt DESC`;
 
@@ -62,7 +62,7 @@ router.get("/showLatest", (req, res) => {
   console.log(query.sql);
 });
 
-// This route is for saving data into contactus db
+// save contact details
 router.post("/contact", (req, res) => {
   let contactData = req.body;
 
@@ -77,6 +77,28 @@ router.post("/contact", (req, res) => {
   });
 
   console.log(query.sql);
+});
+
+// show categories
+router.get("/showCategoryMaster", (req, res) => {
+  let sql = `SELECT * FROM category_master`;
+
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+
+    res.send(result);
+  });
+});
+
+// show featured posts
+router.get("/featuredPosts", (req, res) => {
+  let sql = `SELECT * FROM blog WHERE featured = 1`;
+
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+
+    res.send(result);
+  });
 });
 
 module.exports = router;
