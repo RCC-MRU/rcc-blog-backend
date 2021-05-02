@@ -82,10 +82,13 @@ router.post("/contact", (req, res) => {
 // show comments
 router.get("/showcomments", (req, res) => {
   let sql = `SELECT * FROM comments`;
-  connection.query(sql, (err, result) => {
+
+  const query = db.query(sql, (err, result) => {
     if (err) throw err;
     res.send(result);
   });
+
+  console.log(query.sql);
 });
 
 // show categories
