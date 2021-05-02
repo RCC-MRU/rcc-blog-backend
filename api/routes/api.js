@@ -38,4 +38,13 @@ router.get("/showBlogsByCategory/:category", (req,res)=>{
     res.send(result);
   })
 });
+router.get("/showPopular",(req , res )=>{
+  let sql = `SELECT * FROM blog ORDER BY likes DESC` 
+  
+  connection.query(sql,(err,result)=>{
+    if (err) throw err;
+    res.send(result);
+  })
+
+});
 module.exports = router;
