@@ -47,4 +47,12 @@ router.get("/showPopular",(req , res )=>{
   })
 
 });
+
+router.get("/showcomments",(req,res)=>{
+  let sql = `SELECT * FROM comments` 
+  connection.query(sql,(err,result)=>{
+    if (err) throw err;
+    res.send(result);
+  })
+})
 module.exports = router;
