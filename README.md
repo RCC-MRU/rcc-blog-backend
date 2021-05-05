@@ -19,3 +19,5 @@ npm install --save
 npm start
 ```
 Open http://localhost:3001 to view it in the browser.
+
+>API List: <a href="./resources/API.md">click here</a>
