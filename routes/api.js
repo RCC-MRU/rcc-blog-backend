@@ -95,22 +95,38 @@ router.get("/showcomments", (req, res) => {
 router.get("/showCategoryMaster", (req, res) => {
   let sql = `SELECT * FROM category_master`;
 
-  db.query(sql, (err, result) => {
+  const query = db.query(sql, (err, result) => {
     if (err) throw err;
 
     res.send(result);
   });
+
+  console.log(query.sql);
 });
 
 // show featured posts
 router.get("/featuredPosts", (req, res) => {
   let sql = `SELECT * FROM blog WHERE featured = 1`;
 
-  db.query(sql, (err, result) => {
+  const query = db.query(sql, (err, result) => {
     if (err) throw err;
 
     res.send(result);
   });
+
+  console.log(query.sql);
+});
+
+// fetching data for featured post new method
+router.get("/getFeaturedPost", (req, res) => {
+  let sql = `SELECT blogId, blogTitle, blogImg, blog.createdAt, category, firstName FROM users INNER JOIN blog ON users.userId = blog.userId AND blog.featured = 1`;
+
+  const query = db.query(sql, (err, result) => {
+    if (err) throw err;
+
+    res.send(result);
+  });
+  console.log(query.sql);
 });
 
 module.exports = router;
