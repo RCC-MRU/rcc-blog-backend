@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../database/db");
 
 // show all blog posts
-router.get("/showAllBlogPost", (req, res) => {
+router.get("/c", (req, res) => {
   let sql = `SELECT * FROM blog `;
 
   let query = db.query(sql, (err, result) => {
