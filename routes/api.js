@@ -66,17 +66,27 @@ router.get("/showLatest", (req, res) => {
 router.post("/contact", (req, res) => {
   let contactData = req.body;
 
-  let sql = `INSERT INTO contactus SET ?`;
+  // check if user exist
+  let userExists = `SELECT * FROM contactus WHERE email = '${contactData.email}'`;
 
-  const query = db.query(sql, contactData, (err, result) => {
-    if (err) throw err;
-    res.send({
-      message: "Data added successfully",
-      data: result,
+  if (userExists) {
+    res.status(400);
+    res.send({ message: "User already exists" });
+  } else {
+    // if user does not exist in the database then this block will run
+
+    let sql = `INSERT INTO contactus SET ?`;
+
+    const query = db.query(sql, contactData, (err, result) => {
+      if (err) throw err;
+      res.send({
+        message: "Data added successfully",
+        data: result,
+      });
     });
-  });
 
-  console.log(query.sql);
+    console.log(query.sql);
+  }
 });
 
 // show comments
@@ -118,7 +128,7 @@ router.get("/featuredPosts", (req, res) => {
 });
 
 // fetching data for featured post new method
-router.get("/getFeaturedPost", (req, res) => {
+router.get("/getCategoryPost", (req, res) => {
   let sql = `SELECT blogId, blogTitle, blogImg, blog.createdAt, category, firstName FROM users INNER JOIN blog ON users.userId = blog.userId AND blog.featured = 1`;
 
   const query = db.query(sql, (err, result) => {
