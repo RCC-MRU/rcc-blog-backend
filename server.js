@@ -20,7 +20,7 @@ db.connect((err) => {
 
 // api route
 const apiRouter = require("./routes/api");
-app.use("/routes", apiRouter);
+app.use("/api", apiRouter);
 
 // root route
 app.use("/", (req, res) => {
