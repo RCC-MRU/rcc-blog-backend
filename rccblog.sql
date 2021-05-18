@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2021 at 07:32 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: May 09, 2021 at 01:45 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -80,7 +80,8 @@ CREATE TABLE `category_master` (
 
 INSERT INTO `category_master` (`categoryId`, `categoryName`, `categoryValue`, `slug`) VALUES
 (1, 'Health', 'Health', 'health'),
-(2, 'Fitness', 'Fitness', 'fitness');
+(2, 'Fitness', 'Fitness', 'fitness'),
+(3, 'Workout', 'Workout', 'workout');
 
 -- --------------------------------------------------------
 
@@ -128,7 +129,8 @@ CREATE TABLE `contactus` (
 
 INSERT INTO `contactus` (`contactId`, `email`, `message`, `createdAt`) VALUES
 (1, 'ciais2020.mru@gmail.com', 'fcsdlvcndfnvlfdnvld', '2021-05-02 11:43:11'),
-(2, 'sanchibajaj02@gmail.com', 'this is my message', '2021-05-05 12:54:35');
+(2, 'sanchibajaj02@gmail.com', 'this is my message', '2021-05-05 12:54:35'),
+(3, 'qwerty@gmail.com', 'this is a qwerty message', '2021-05-09 11:17:42');
 
 -- --------------------------------------------------------
 
@@ -283,7 +285,7 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT for table `category_master`
 --
 ALTER TABLE `category_master`
-  MODIFY `categoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `categoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -295,7 +297,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `contactus`
 --
 ALTER TABLE `contactus`
-  MODIFY `contactId` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `contactId` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
