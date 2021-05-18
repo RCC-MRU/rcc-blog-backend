@@ -1,6 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../database/db");
+const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
+
+// Set up Global configuration access
+dotenv.config();
 
 // show all blog posts
 router.get("/showAllBlogPost", (req, res) => {
@@ -183,5 +188,31 @@ router.get("/author/:userId", (req, res) => {
   });
   console.log(query.sql);
 });
+router.post("/user/generateToken", (req, res) => {
+  // Validate User Here
+  let userData = req.body;
+  let sql = `SELECT * FROM users WHERE email = '${userData.email}' AND password = '${userData.pass}'`;
+  // Then generate JWT Token
+  const query = db.query(sql, (err, result) => {
+    if (err) throw err;
+    let num = result.length;
+    if(num == 1){
+      const jwtSecretKey = process.env.JWT_SECRET_KEY;
+  // const jwtSecretKey = "Random";
+  let data = {
+      time: Date(),
+      userId: 12,
+  }
 
+  const token = jwt.sign(data, jwtSecretKey);
+  // res.send(jwtSecretKey);
+  res.send(token);
+    }
+    else{
+        res.status(400);
+        res.send({ message: "Invalid credentials" });
+    }
+  });
+  
+});
 module.exports = router;
