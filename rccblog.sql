@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2021 at 03:39 PM
+-- Generation Time: May 07, 2021 at 07:32 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -50,11 +50,11 @@ CREATE TABLE `blog` (
 INSERT INTO `blog` (`blogId`, `userId`, `preference`, `blogTitle`, `blogImg`, `likes`, `blogContent`, `createdAt`, `modifiedAt`, `slug`, `category`, `viewCounter`, `featured`) VALUES
 (1, 1, 'good', 'Your Mood Depends on The Food', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_594248672.jpg', 10, 'More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much unstinting violently pessimistically far camel inanimately. Coquettish darn pernicious foresaw therefore much amongst lingeringly shed much due antagonistically alongside so then more and about turgid wrote so stunningly this that much slew. More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much Tonx cray commodo, exercitation you probably haven’t heard of them beard cred. Stumptown bespoke, biodiesel minim beard High Life incididunt retro sustainable 90′s Echo Park Tumblr. That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth.', '2021-04-30 17:28:55', '2021-04-30 17:28:55', 'your-mood-depends-on-the-food', 'Health', 10, 1),
 (2, 2, 'good', '8 Yoga Poses for a Strong Core', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_125340167.jpg', 10, 'More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much unstinting violently pessimistically far camel inanimately. Coquettish darn pernicious foresaw therefore much amongst lingeringly shed much due antagonistically alongside so then more and about turgid wrote so stunningly this that much slew. More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much Tonx cray commodo, exercitation you probably haven’t heard of them beard cred. Stumptown bespoke, biodiesel minim beard High Life incididunt retro sustainable 90′s Echo Park Tumblr. That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth.', '2021-04-30 17:41:26', '2021-04-30 17:41:26', '8-yoga-poses-for-a-strong-core', 'Health', 11, 1),
-(3, 3, 'good', 'Do This 20-Minute HIIT Workout Routine', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_125340167.jpg', 10, 'More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much unstinting violently pessimistically far camel inanimately. Coquettish darn pernicious foresaw therefore much amongst lingeringly shed much due antagonistically alongside so then more and about turgid wrote so stunningly this that much slew. More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much Tonx cray commodo, exercitation you probably haven’t heard of them beard cred. Stumptown bespoke, biodiesel minim beard High Life incididunt retro sustainable 90′s Echo Park Tumblr. That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth.', '2021-04-30 17:46:47', '2021-04-30 17:46:47', 'do-this-20-minute-hiit-workout-routine', 'Health', 12, 1),
+(3, 3, 'good', 'Do This 20-Minute HIIT Workout Routine', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_125340167.jpg', 10, 'More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much unstinting violently pessimistically far camel inanimately. Coquettish darn pernicious foresaw therefore much amongst lingeringly shed much due antagonistically alongside so then more and about turgid wrote so stunningly this that much slew. More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much Tonx cray commodo, exercitation you probably haven’t heard of them beard cred. Stumptown bespoke, biodiesel minim beard High Life incididunt retro sustainable 90′s Echo Park Tumblr. That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth.', '2021-04-30 17:46:47', '2021-04-30 17:46:47', 'do-this-20-minute-hiit-workout-routine', 'Health', 12, 0),
 (4, 1, 'good', 'A First Timer’s Marathon Training Plan', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/christopher-campbell-33030-scaled.jpg', 10, 'More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much unstinting violently pessimistically far camel inanimately. Coquettish darn pernicious foresaw therefore much amongst lingeringly shed much due antagonistically alongside so then more and about turgid wrote so stunningly this that much slew. More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much Tonx cray commodo, exercitation you probably haven’t heard of them beard cred. Stumptown bespoke, biodiesel minim beard High Life incididunt retro sustainable 90′s Echo Park Tumblr. That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth.', '2021-04-30 17:11:58', '2021-04-30 17:11:58', '8-yoga-poses-for-a-strong-core', 'Health', 13, 0),
 (5, 2, 'good', 'Cold Weather Running Warm Up Mistakes', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_498434587.jpg', 10, 'More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much unstinting violently pessimistically far camel inanimately. Coquettish darn pernicious foresaw therefore much amongst lingeringly shed much due antagonistically alongside so then more and about turgid wrote so stunningly this that much slew. More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much Tonx cray commodo, exercitation you probably haven’t heard of them beard cred. Stumptown bespoke, biodiesel minim beard High Life incididunt retro sustainable 90′s Echo Park Tumblr. That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth.', '2021-04-30 18:02:46', '2021-04-30 18:02:46', 'cold-weather-running-warm-up-mistakes', 'Workout', 14, 0),
 (6, 3, 'good', 'Our Most Important Piece of Running Gear', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_700450099.jpg', 10, 'More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much unstinting violently pessimistically far camel inanimately. Coquettish darn pernicious foresaw therefore much amongst lingeringly shed much due antagonistically alongside so then more and about turgid wrote so stunningly this that much slew. More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much Tonx cray commodo, exercitation you probably haven’t heard of them beard cred. Stumptown bespoke, biodiesel minim beard High Life incididunt retro sustainable 90′s Echo Park Tumblr. That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth.', '2021-04-30 18:08:32', '2021-04-30 18:08:32', 'our-most-important-piece-of-running-gear', 'Fitness', 15, 0),
-(7, 1, 'good', 'Healthy No-Bake Strawberry Mug Cakes Served', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_654900490.jpg', 10, 'More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much unstinting violently pessimistically far camel inanimately. Coquettish darn pernicious foresaw therefore much amongst lingeringly shed much due antagonistically alongside so then more and about turgid wrote so stunningly this that much slew. More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much Tonx cray commodo, exercitation you probably haven’t heard of them beard cred. Stumptown bespoke, biodiesel minim beard High Life incididunt retro sustainable 90′s Echo Park Tumblr. That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth.', '2021-04-30 18:12:12', '2021-04-30 18:12:12', 'healthy-no-bake-strawberry-mug-cakes-served', 'Fitness', 16, 0),
+(7, 1, 'good', 'Healthy No-Bake Strawberry Mug Cakes Served', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_654900490.jpg', 10, 'More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much unstinting violently pessimistically far camel inanimately. Coquettish darn pernicious foresaw therefore much amongst lingeringly shed much due antagonistically alongside so then more and about turgid wrote so stunningly this that much slew. More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much Tonx cray commodo, exercitation you probably haven’t heard of them beard cred. Stumptown bespoke, biodiesel minim beard High Life incididunt retro sustainable 90′s Echo Park Tumblr. That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth.', '2021-04-30 18:12:12', '2021-04-30 18:12:12', 'healthy-no-bake-strawberry-mug-cakes-served', 'Fitness', 16, 1),
 (8, 2, 'good', 'A Low Effort Ab Burn Out Plan', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_695214214-1024x682.jpg', 10, 'More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much unstinting violently pessimistically far camel inanimately. Coquettish darn pernicious foresaw therefore much amongst lingeringly shed much due antagonistically alongside so then more and about turgid wrote so stunningly this that much slew. More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much Tonx cray commodo, exercitation you probably haven’t heard of them beard cred. Stumptown bespoke, biodiesel minim beard High Life incididunt retro sustainable 90′s Echo Park Tumblr. That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth.', '2021-04-30 18:15:17', '2021-04-30 18:15:17', 'a-low-effort-ab-burn-out-plan', 'Fitness', 17, 0),
 (9, 3, 'good', '7 Lessons to Crush Your Next Running Goal', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/martine-jacobsen-343530.jpg', 10, 'More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much unstinting violently pessimistically far camel inanimately. Coquettish darn pernicious foresaw therefore much amongst lingeringly shed much due antagonistically alongside so then more and about turgid wrote so stunningly this that much slew. More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much Tonx cray commodo, exercitation you probably haven’t heard of them beard cred. Stumptown bespoke, biodiesel minim beard High Life incididunt retro sustainable 90′s Echo Park Tumblr. That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth.', '2021-04-30 18:17:53', '2021-04-30 18:17:53', '7-lessons-to-crush-your-next-running-goal', 'Fitness', 18, 0),
 (10, 1, 'good', 'Choose The Right Running Shoes', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_556889842.jpg', 10, 'More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much unstinting violently pessimistically far camel inanimately. Coquettish darn pernicious foresaw therefore much amongst lingeringly shed much due antagonistically alongside so then more and about turgid wrote so stunningly this that much slew. More off this less hello salamander lied porpoise much over tightly circa horse taped so innocuously outside crud mightily rigorous negative one inside gorilla and drew humbly shot tortoise inside opaquely. Crud much Tonx cray commodo, exercitation you probably haven’t heard of them beard cred. Stumptown bespoke, biodiesel minim beard High Life incididunt retro sustainable 90′s Echo Park Tumblr. That far ground rat pure from newt far panther crane lorikeet overlay alas cobra across. Photo booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica. Salvia esse nihil, flexitarian Truffaut synth.', '2021-04-30 18:19:35', '2021-04-30 18:19:35', 'choose-the-right-sunning-shoes', 'Workout', 19, 0),
@@ -68,7 +68,7 @@ INSERT INTO `blog` (`blogId`, `userId`, `preference`, `blogTitle`, `blogImg`, `l
 --
 
 CREATE TABLE `category_master` (
-  `id` int(11) NOT NULL,
+  `categoryId` int(11) NOT NULL,
   `categoryName` varchar(50) NOT NULL,
   `categoryValue` varchar(50) NOT NULL,
   `slug` varchar(50) NOT NULL
@@ -78,7 +78,7 @@ CREATE TABLE `category_master` (
 -- Dumping data for table `category_master`
 --
 
-INSERT INTO `category_master` (`id`, `categoryName`, `categoryValue`, `slug`) VALUES
+INSERT INTO `category_master` (`categoryId`, `categoryName`, `categoryValue`, `slug`) VALUES
 (1, 'Health', 'Health', 'health'),
 (2, 'Fitness', 'Fitness', 'fitness');
 
@@ -116,18 +116,19 @@ INSERT INTO `comments` (`commentId`, `userId`, `blogId`, `comment`, `author`, `c
 --
 
 CREATE TABLE `contactus` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `contactId` bigint(20) UNSIGNED NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `contactus`
 --
 
-INSERT INTO `contactus` (`id`, `email`, `message`, `created_at`) VALUES
-(1, 'ciais2020.mru@gmail.com', 'fcsdlvcndfnvlfdnvld', '2021-05-02 11:43:11');
+INSERT INTO `contactus` (`contactId`, `email`, `message`, `createdAt`) VALUES
+(1, 'ciais2020.mru@gmail.com', 'fcsdlvcndfnvlfdnvld', '2021-05-02 11:43:11'),
+(2, 'sanchibajaj02@gmail.com', 'this is my message', '2021-05-05 12:54:35');
 
 -- --------------------------------------------------------
 
@@ -188,7 +189,7 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `users` (
-  `UserId` int(10) UNSIGNED NOT NULL,
+  `userId` int(10) UNSIGNED NOT NULL,
   `firstName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lastName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -207,7 +208,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UserId`, `firstName`, `lastName`, `email`, `roles`, `mobileNo`, `password`, `dob`, `isActive`, `preference`, `profileImg`, `createdAt`, `modifiedAt`) VALUES
+INSERT INTO `users` (`userId`, `firstName`, `lastName`, `email`, `roles`, `mobileNo`, `password`, `dob`, `isActive`, `preference`, `profileImg`, `createdAt`, `modifiedAt`) VALUES
 (1, 'Sanchit', 'Bajaj', 'sanchitbajaj02@gmail.com', 0, 8743811303, 'sanchitbajaj', '2001-04-02', 0, 'Fitness', '', '2021-04-30 18:32:45', NULL),
 (2, 'Kunal', 'Arora', '10kunalji@gmail.com', 0, 9810362734, 'password', '2002-06-10', 0, 'Workout', '', '2021-04-30 16:08:09', NULL),
 (3, 'Khushi', 'Arora', 'akhushi72@gmail.com', 0, 8368059827, 'password', '2002-05-23', 0, 'Fitness', '', '2021-04-30 18:54:18', NULL);
@@ -226,7 +227,7 @@ ALTER TABLE `blog`
 -- Indexes for table `category_master`
 --
 ALTER TABLE `category_master`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`categoryId`);
 
 --
 -- Indexes for table `comments`
@@ -239,7 +240,7 @@ ALTER TABLE `comments`
 -- Indexes for table `contactus`
 --
 ALTER TABLE `contactus`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`contactId`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -264,7 +265,7 @@ ALTER TABLE `password_resets`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`UserId`),
+  ADD PRIMARY KEY (`userId`),
   ADD UNIQUE KEY `users_email_unique` (`email`),
   ADD UNIQUE KEY `users_mobileno_unique` (`mobileNo`);
 
@@ -282,7 +283,7 @@ ALTER TABLE `blog`
 -- AUTO_INCREMENT for table `category_master`
 --
 ALTER TABLE `category_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `categoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -294,7 +295,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `contactus`
 --
 ALTER TABLE `contactus`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `contactId` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -312,7 +313,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `userId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

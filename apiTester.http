@@ -1,0 +1,9 @@
+# GET http://localhost:3001/routes/showBlogsByCategory/health
+
+POST http://localhost:3001/routes/contact HTTP/1.1
+Content-Type: "application/json"
+
+{
+  "email": "abc@example.com",
+  "message": "this is message example"
+}
