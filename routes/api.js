@@ -162,4 +162,30 @@ router.get("/getCategoryPost", (req, res) => {
   console.log(query.sql);
 });
 
+//for similar posts in decending order
+
+router.get("/getSimilarPosts/:category", (req, res) => {
+
+  let sql = `SELECT * FROM blog WHERE category = '${req.params.category}' ORDER BY createdAt DESC`;
+
+  const query = db.query(sql, (err, result) => {
+    if (err) throw err;
+
+    res.send(result);
+  });
+  console.log(query.sql); 
+});
+
+//About Author information
+router.get("/author/:id", (req, res) => {
+
+  let sql = `SELECT * FROM users WHERE userId = '${req.params.id}'`;
+
+  const query = db.query(sql, (err, result) => {
+    if (err) throw err;
+
+    res.send(result);
+  });
+  console.log(query.sql); 
+});
 module.exports = router;
