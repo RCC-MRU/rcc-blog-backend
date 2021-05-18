@@ -18,6 +18,15 @@ cd blog-project-node
 npm install --save
 npm start
 ```
+- Follow this procedure after every pull request
+  - check the Documentation
+  - open Xampp and delete the old database
+  - create new database with same name and go to import tab
+  - import new database and click go button
+  - open terminal and type ```npm start```
+
 Open http://localhost:3001 to view it in the browser.
 
->API List: <a href="./resources/API.md">click here</a>
+><a href="./resources/API.md">API List</a>
+
+><a href="./resources/DOCS">Documentation</a>

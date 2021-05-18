@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../database/db");
 
 // show all blog posts
-router.get("/c", (req, res) => {
+router.get("/showAllBlogPost", (req, res) => {
   let sql = `SELECT * FROM blog `;
 
   let query = db.query(sql, (err, result) => {
@@ -65,15 +65,16 @@ router.get("/showLatest", (req, res) => {
 // save contact details
 router.post("/contact", (req, res) => {
   let contactData = req.body;
-  function isEmail(email){
-    var emailFormat=/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-    if(email !== '' && email.match(emailFormat)){
-        return true;
+
+  function isEmail(email) {
+    var emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    if (email !== "" && email.match(emailFormat)) {
+      return true;
+    } else {
+      return false;
     }
-    else{
-        return false;
-    }
-}
+  }
+
   // check if user exist
   let userExists = `SELECT * FROM contactus WHERE email = '${contactData.email}'`;
   // let userExists = `SELECT email FROM contactus`;
@@ -81,16 +82,12 @@ router.post("/contact", (req, res) => {
     res.status(400);
     res.send({ message: "Email entered is invalid" });
   } else {
-    
     const check = db.query(userExists, (err, result1) => {
       if (err) throw err;
-      // console.log(result);
-      // res.send(result);
-      // console.log(result.length);
-      const num = result1.length;
 
-      // console.log(check);
-      if (num) {
+      const isEntryInTable = result1.length;
+
+      if (isEntryInTable) {
         res.status(400);
         res.send({ message: "User already exists" });
       } else {
@@ -153,6 +150,31 @@ router.get("/featuredPosts", (req, res) => {
 // fetching data for featured post new method
 router.get("/getCategoryPost", (req, res) => {
   let sql = `SELECT blogId, blogTitle, blogImg, blog.createdAt, category, firstName FROM users INNER JOIN blog ON users.userId = blog.userId AND blog.featured = 1`;
+
+  const query = db.query(sql, (err, result) => {
+    if (err) throw err;
+
+    res.send(result);
+  });
+  console.log(query.sql);
+});
+
+
+//for similar posts in decending order
+router.get("/getSimilarPosts/:category", (req, res) => {
+  let sql = `SELECT * FROM blog WHERE category = '${req.params.category}' ORDER BY createdAt DESC`;
+
+  const query = db.query(sql, (err, result) => {
+    if (err) throw err;
+
+    res.send(result);
+  });
+  console.log(query.sql);
+});
+
+//About Author information
+router.get("/author/:userId", (req, res) => {
+  let sql = `SELECT * FROM users WHERE userId = '${req.params.userId}'`;
 
   const query = db.query(sql, (err, result) => {
     if (err) throw err;

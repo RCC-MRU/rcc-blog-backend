@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2021 at 01:45 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.5
+-- Generation Time: May 18, 2021 at 08:41 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -70,6 +70,7 @@ INSERT INTO `blog` (`blogId`, `userId`, `preference`, `blogTitle`, `blogImg`, `l
 CREATE TABLE `category_master` (
   `categoryId` int(11) NOT NULL,
   `categoryName` varchar(50) NOT NULL,
+  `categoryImg` varchar(250) NOT NULL,
   `categoryValue` varchar(50) NOT NULL,
   `slug` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -78,10 +79,10 @@ CREATE TABLE `category_master` (
 -- Dumping data for table `category_master`
 --
 
-INSERT INTO `category_master` (`categoryId`, `categoryName`, `categoryValue`, `slug`) VALUES
-(1, 'Health', 'Health', 'health'),
-(2, 'Fitness', 'Fitness', 'fitness'),
-(3, 'Workout', 'Workout', 'workout');
+INSERT INTO `category_master` (`categoryId`, `categoryName`, `categoryImg`, `categoryValue`, `slug`) VALUES
+(1, 'Health', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2018/01/Untitled-6.jpg', 'Health', 'health'),
+(2, 'Fitness', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2018/01/Untitled-4.jpg', 'Fitness', 'fitness'),
+(3, 'Workout', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2018/01/Untitled-5.jpg', 'Workout', 'workout');
 
 -- --------------------------------------------------------
 
@@ -130,7 +131,12 @@ CREATE TABLE `contactus` (
 INSERT INTO `contactus` (`contactId`, `email`, `message`, `createdAt`) VALUES
 (1, 'ciais2020.mru@gmail.com', 'fcsdlvcndfnvlfdnvld', '2021-05-02 11:43:11'),
 (2, 'sanchibajaj02@gmail.com', 'this is my message', '2021-05-05 12:54:35'),
-(3, 'qwerty@gmail.com', 'this is a qwerty message', '2021-05-09 11:17:42');
+(3, 'qwerty@gmail.com', 'this is a qwerty message', '2021-05-09 11:17:42'),
+(4, 'test1@gmail.com', 'This is a test message', '2021-05-13 10:46:27'),
+(5, 'test1', 'This is a test message', '2021-05-13 10:47:38'),
+(6, '', 'This is a test message', '2021-05-13 10:48:24'),
+(7, '1', 'This is a test message', '2021-05-13 10:52:49'),
+(8, 'sanchit@gmail.com', 'This is a test message 22', '2021-05-13 10:58:09');
 
 -- --------------------------------------------------------
 
@@ -140,7 +146,7 @@ INSERT INTO `contactus` (`contactId`, `email`, `message`, `createdAt`) VALUES
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -195,6 +201,7 @@ CREATE TABLE `users` (
   `firstName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lastName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `about` varchar(1500) COLLATE utf8mb4_unicode_ci NOT NULL,
   `roles` int(11) NOT NULL,
   `mobileNo` bigint(11) NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -210,10 +217,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userId`, `firstName`, `lastName`, `email`, `roles`, `mobileNo`, `password`, `dob`, `isActive`, `preference`, `profileImg`, `createdAt`, `modifiedAt`) VALUES
-(1, 'Sanchit', 'Bajaj', 'sanchitbajaj02@gmail.com', 0, 8743811303, 'sanchitbajaj', '2001-04-02', 0, 'Fitness', '', '2021-04-30 18:32:45', NULL),
-(2, 'Kunal', 'Arora', '10kunalji@gmail.com', 0, 9810362734, 'password', '2002-06-10', 0, 'Workout', '', '2021-04-30 16:08:09', NULL),
-(3, 'Khushi', 'Arora', 'akhushi72@gmail.com', 0, 8368059827, 'password', '2002-05-23', 0, 'Fitness', '', '2021-04-30 18:54:18', NULL);
+INSERT INTO `users` (`userId`, `firstName`, `lastName`, `email`, `about`, `roles`, `mobileNo`, `password`, `dob`, `isActive`, `preference`, `profileImg`, `createdAt`, `modifiedAt`) VALUES
+(1, 'Sanchit', 'Bajaj', 'sanchitbajaj02@gmail.com', 'Rodney Erickson is a content marketing professional at HubSpot, an inbound marketing and sales platform that helps companies attract visitors, convert leads, and close customers. Previously, Rodney wo', 0, 8743811303, 'sanchitbajaj', '2001-04-02', 0, 'Fitness', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_700450099-1024x682.jpg', '2021-05-18 05:50:07', NULL),
+(2, 'Kunal', 'Arora', '10kunalji@gmail.com', 'Manuel Iglesias draws from his life story when writing about the experiences of migrant workers. His first series of poems, My Father\'s Hands, appeared in The New Yorker and describes how his family c', 0, 9810362734, 'password', '2002-06-10', 0, 'Workout', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_700450099-1024x682.jpg', '2021-05-18 05:51:06', NULL),
+(3, 'Khushi', 'Arora', 'akhushi72@gmail.com', 'Debra Carroll knows that successful students become successful adults. This is her 15th year at Edison Elementary School and her 10th year teaching fourth grade. So far, fourth grade is her favorite g', 0, 8368059827, 'password', '2002-05-23', 0, 'Fitness', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2018/01/Untitled-3.jpg', '2021-05-18 05:50:26', NULL);
 
 --
 -- Indexes for dumped tables
@@ -249,7 +256,7 @@ ALTER TABLE `contactus`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uid`);
 
 --
 -- Indexes for table `migrations`
@@ -297,7 +304,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `contactus`
 --
 ALTER TABLE `contactus`
-  MODIFY `contactId` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `contactId` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
