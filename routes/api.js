@@ -188,7 +188,7 @@ router.get("/author/:userId", (req, res) => {
   });
   console.log(query.sql);
 });
-router.post("/user/generateToken", (req, res) => {
+router.post("/user/login", (req, res) => {
   // Validate User Here
   let userData = req.body;
   let sql = `SELECT * FROM users WHERE email = '${userData.email}' AND password = '${userData.pass}'`;
@@ -199,21 +199,26 @@ router.post("/user/generateToken", (req, res) => {
     if(num == 1){
       const jwtSecretKey = process.env.JWT_SECRET_KEY;
   // const jwtSecretKey = "Random";
-  let id = result.forEach(element => {
-    return element.userId;
-  });
+  // let id = result.forEach(element => {
+  //   return element.userId;
+  // });
+  let id = JSON.stringify(result[0].userId);
+  // let id = result.about;
+  // res.send();
   let data = {
       time: Date(),
-      userId: id,
+      userId: id
   }
 
   const token = jwt.sign(data, jwtSecretKey, {
-
     expiresIn: '1h' // expires in 1 hour
-
      });
   // res.send(jwtSecretKey);
-  res.send(token);
+  res.send({
+    "message" : "Login Successful",
+    "email" : userData.email,
+    "token" : token
+  });
     }
     else{
         res.status(400);
