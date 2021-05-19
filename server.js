@@ -26,8 +26,16 @@ db.connect((err) => {
 const apiRouter = require("./routes/api");
 app.use("/routes", apiRouter);
 
+// blogs route
+const blogRouter = require("./routes/blog");
+app.use("/blogs", blogRouter);
+
+// users route
+const userRouter = require("./routes/user");
+app.use("/users", userRouter);
+
 // root route
-app.use("/", (req, res) => {
+app.use("*", (req, res) => {
   res.status(200);
   res.send({
     message: "this is the root route",
