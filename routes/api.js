@@ -199,12 +199,19 @@ router.post("/user/generateToken", (req, res) => {
     if(num == 1){
       const jwtSecretKey = process.env.JWT_SECRET_KEY;
   // const jwtSecretKey = "Random";
+  let id = result.forEach(element => {
+    return element.userId;
+  });
   let data = {
       time: Date(),
-      userId: 12,
+      userId: id,
   }
 
-  const token = jwt.sign(data, jwtSecretKey);
+  const token = jwt.sign(data, jwtSecretKey, {
+
+    expiresIn: '1h' // expires in 1 hour
+
+     });
   // res.send(jwtSecretKey);
   res.send(token);
     }
