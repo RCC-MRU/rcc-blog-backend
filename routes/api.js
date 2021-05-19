@@ -70,7 +70,11 @@ router.get("/author/:userId", (req, res) => {
   const query = db.query(sql, (err, result) => {
     if (err) throw err;
 
-    res.send(result);
+    res.status(200);
+    res.send({
+      message: "Author Details successfully received",
+      details: result,
+    });
   });
   console.log(query.sql);
 });
