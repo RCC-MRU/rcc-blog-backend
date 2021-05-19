@@ -20,6 +20,7 @@ router.get("/showAllBlogPost", (req, res) => {
 });
 
 // show posts by slug
+// TODO: have to add edit this api to check with the author-details api
 router.get("/showSingleBlogPost/:slug", (req, res) => {
   let sql = `SELECT * FROM blog WHERE slug = '${req.params.slug}'`;
 
@@ -152,7 +153,7 @@ router.get("/featuredPosts", (req, res) => {
   console.log(query.sql);
 });
 
-// fetching data for featured post new method
+// fetching data for featured post displaying on bottom of the homepage new method
 router.get("/getCategoryPost", (req, res) => {
   let sql = `SELECT blogId, blogTitle, blogImg, blog.createdAt, category, firstName FROM users INNER JOIN blog ON users.userId = blog.userId AND blog.featured = 1`;
 
@@ -178,6 +179,7 @@ router.get("/getSimilarPosts/:category", (req, res) => {
 });
 
 //About Author information
+// FIXME: make connection of this api with getSingleBlogPost
 router.get("/author/:userId", (req, res) => {
   let sql = `SELECT * FROM users WHERE userId = '${req.params.userId}'`;
 
