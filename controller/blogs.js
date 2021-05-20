@@ -14,7 +14,7 @@ module.exports = {
       if (err) throw err;
 
       res.status(200);
-      res.send({ message: "Query run successfully", data: result });
+      res.send({ message: "Query run successful", data: result });
     });
 
     console.log("QUERY: ", query.sql);
