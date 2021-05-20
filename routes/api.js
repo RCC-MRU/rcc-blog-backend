@@ -18,7 +18,7 @@ router.post("/contact", (req, res) => {
 
   // check if user exist
   let userExists = `SELECT * FROM contactus WHERE email = '${contactData.email}'`;
-  // let userExists = `SELECT email FROM contactus`;
+
   if (!isEmail(contactData.email)) {
     res.status(400);
     res.send({ message: "Email entered is invalid" });

@@ -1,36 +1,31 @@
 const express = require("express");
-const router = express.Router();
 const db = require("../database/db");
 const jwt = require("jsonwebtoken");
 
 module.exports = {
-  login: async (req, res) => {
-
+  login: async function (req, res) {
     // Validate User Here
     let userData = req.body;
-    let sql = `SELECT * FROM users WHERE email = '${userData.email}' AND password = '${userData.pass}'`;
+    let sql = `SELECT * FROM users WHERE email = '${userData.email}' AND password = '${userData.password}'`;
 
     // Then generate JWT Token
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
-      let num = result.length;
-      
-      if (num == 1) {
+      let userExists = result.length;
+
+      if (userExists) {
         const jwtSecretKey = process.env.JWT_SECRET_KEY;
-        // const jwtSecretKey = "Random";
-        // let id = result.forEach(element => {
-        //   return element.userId;
-        // });
-        let id = JSON.stringify(result[0].userId);
-        // let id = result.about;
-        // res.send();
+
+        // let id = JSON.stringify(result[0].userId);
+        let id = result[0].userId;
+
         let data = {
           time: Date(),
           userId: id,
         };
 
         const token = jwt.sign(data, jwtSecretKey, {
-          expiresIn: "1h", // expires in 1 hour
+          expiresIn: "1h",
         });
         // res.send(jwtSecretKey);
         res.send({
@@ -43,5 +38,6 @@ module.exports = {
         res.send({ message: "Invalid credentials" });
       }
     });
+    console.log(query.sql);
   },
 };

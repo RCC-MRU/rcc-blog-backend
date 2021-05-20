@@ -7,10 +7,10 @@ const jwt = require("jsonwebtoken");
 
 const Users = require("../controller/users");
 
-router.get("/", (req, res) => {
+router.route("/").get((req, res) => {
   res.send({ message: "hello" });
 });
 
-router.post("/login", Users.login);
+router.route("/login").post(Users.login);
 
 module.exports = router;

@@ -1,7 +1,6 @@
 // This page contains APIs for displaying blogs
 
 const express = require("express");
-const router = express.Router();
 const db = require("../database/db");
 const jwt = require("jsonwebtoken");
 

@@ -1,14 +1,16 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const cors = require('cors');
-const dotenv = require('dotenv');
+const cors = require("cors");
 
+// For Environment variables
+const dotenv = require("dotenv");
 dotenv.config();
 
 const port = process.env.PORT || 3000;
 
 // middlewares
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors());
@@ -44,5 +46,4 @@ app.use("*", (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
-  // console.log(process.env.PORT);
 });
