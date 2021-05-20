@@ -116,7 +116,7 @@ module.exports = {
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
 
-      res.send(result);
+      res.send({"message": "success", "detail": result});
     });
     console.log(query.sql);
   },
