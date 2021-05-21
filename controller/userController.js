@@ -12,7 +12,7 @@ module.exports = {
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
       let userExists = result.length;
-
+      // console.log(userExists);
       if (userExists) {
         const jwtSecretKey = process.env.JWT_SECRET_KEY;
 
@@ -31,6 +31,7 @@ module.exports = {
         res.send({
           message: "Login Successful",
           email: userData.email,
+          userId: id,
           token: token,
         });
       } else {

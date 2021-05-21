@@ -5,7 +5,7 @@ const router = express.Router();
 const db = require("../database/db");
 const jwt = require("jsonwebtoken");
 
-const Users = require("../controller/users");
+const Users = require("../controller/userController");
 
 router.route("/").get((req, res) => {
   res.send({ message: "hello" });
