@@ -43,7 +43,8 @@ module.exports = {
 
     let query = db.query(sql, (err, result) => {
       if (err) throw err;
-      res.send(result);
+      res.status(200);
+      res.send({ message: "Query run successful", data: result });
     });
 
     console.log(query.sql);
@@ -55,7 +56,8 @@ module.exports = {
 
     let query = db.query(sql, (err, result) => {
       if (err) throw err;
-      res.send(result);
+      res.status(200);
+      res.send({ message: "Query run successful", data: result });
     });
 
     console.log(query.sql);
@@ -67,7 +69,8 @@ module.exports = {
 
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
-      res.send(result);
+      res.status(200);
+      res.send({ message: "Query run successful", data: result });
     });
 
     console.log(query.sql);
@@ -79,7 +82,8 @@ module.exports = {
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
 
-      res.send(result);
+      res.status(200);
+      res.send({ message: "Query run successful", data: result });
     });
 
     console.log(query.sql);
@@ -92,7 +96,8 @@ module.exports = {
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
 
-      res.send(result);
+      res.status(200);
+      res.send({ message: "Query run successful", data: result });
     });
 
     console.log(query.sql);
@@ -104,7 +109,8 @@ module.exports = {
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
 
-      res.send(result);
+      res.status(200);
+      res.send({ message: "Query run successful", data: result });
     });
     console.log(query.sql);
   },

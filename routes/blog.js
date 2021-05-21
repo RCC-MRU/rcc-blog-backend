@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../database/db");
 const jwt = require("jsonwebtoken");
 
-const Blogs = require("../controller/blogs");
+const Blogs = require("../controller/blogController");
 
 // show all blog posts
 router.route("/showAllBlogPost").get(Blogs.showAllBlogPost);
