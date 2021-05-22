@@ -31,7 +31,7 @@ module.exports = {
 
       if (isEntryInTable) {
         res.status(400);
-        res.send({ message: "User already exists" });
+        res.json({ message: "User already exists" });
       } else {
         // if user does not exist in the database then this block will run
 
@@ -59,7 +59,7 @@ module.exports = {
         const query = db.query(sql, (err, result) => {
           if (err) throw err;
           res.status(200);
-          res.send({ message: "Query run successful", data: result });
+          res.json({ message: "Query run successful", data: result });
         });
       
         console.log(query.sql);
@@ -74,7 +74,7 @@ module.exports = {
     if (err) throw err;
 
     res.status(200);
-    res.send({
+    res.json({
       message: "Author Details successfully received",
       details: result,
     });
