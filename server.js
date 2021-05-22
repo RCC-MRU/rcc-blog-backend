@@ -36,6 +36,11 @@ app.use("/blogs", blogRouter);
 const userRouter = require("./routes/user");
 app.use("/users", userRouter);
 
+//verify
+const middleware = require("./middleware/jwtMiddleware");
+app.use("/test", middleware.verify, function(req, res) {
+  console.log("User Testing");
+});
 // root route
 app.use("*", (req, res) => {
   res.status(200);
