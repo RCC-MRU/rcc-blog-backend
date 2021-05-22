@@ -2,7 +2,50 @@ const express = require("express");
 const db = require("../database/db");
 const jwt = require("jsonwebtoken");
 
+
 module.exports = {
+  register: async function (req, res) {
+    let registerUser = req.body;
+
+    function isEmail(email) {
+      var emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+      if (email !== "" && email.match(emailFormat)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    // check if already registered user
+    let userExists = `SELECT * FROM register WHERE email = '${registerUser.email}'`;
+
+    if (!isEmail(registerUser.email)) {
+      res.status(400);
+      res.send({ message: "Email entered is invalid" });
+    } else {
+      const check = db.query(userExists, (err, result1) => {
+        if (err) throw err;
+
+        const isEntryInTable = result1.length;
+
+        if (isEntryInTable) {
+          res.status(400);
+          res.json({ message: "User already registered" });
+        } else {
+
+          let sql = `INSERT INTO register SET ?`;
+
+          const query = db.query(sql, registerUser, (err, results) => {
+            if (err) throw err;
+
+            res.status(200).json({
+              message: "user registered successfully",
+              data: results,
+            });
+          });
+        }
+      })
+    }
+  },
   login: async function (req, res) {
     // Validate User Here
     let userData = req.body;
@@ -40,5 +83,6 @@ module.exports = {
       }
     });
     console.log(query.sql);
-  },
-};
+  }
+}
+
