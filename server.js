@@ -37,8 +37,8 @@ const userRouter = require("./routes/user");
 app.use("/users", userRouter);
 
 //verify
-const middleware = require("./middleware/jwtMiddleware");
-app.use("/test", middleware.verify, function(req, res) {
+const jwtmiddleware = require("./middleware/jwtMiddleware");
+app.use("/test", jwtmiddleware.verify, function(req, res) {
   console.log("User Testing");
 });
 // root route
