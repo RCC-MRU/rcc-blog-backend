@@ -30,6 +30,6 @@ router.route("/showCategoryMaster").get(Blogs.showCategoryMaster);
 router.route("/getCategoryPost").get(Blogs.getCategoryPost);
 
 //show similar posts in decending order
-router.route("/showSimilarPosts/:category").get(Blogs.showSimilarPosts);
+router.route("/showSimilarPosts/:slug").get(Blogs.showSimilarPosts);
 
 module.exports = router;
