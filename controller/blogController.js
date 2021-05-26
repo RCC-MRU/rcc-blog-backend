@@ -116,13 +116,22 @@ module.exports = {
   },
 
   showSimilarPosts: async function (req, res) {
-    let sql = `SELECT * FROM blog WHERE category = '${req.params.category}' ORDER BY createdAt DESC`;
+    let sql1 = `SELECT * FROM blog WHERE slug = '${req.params.slug}'`;
 
-    const query = db.query(sql, (err, result) => {
-      if (err) throw err;
-
-      res.send({"message": "success", "detail": result});
+    const query1 = db.query(sql1, (err1, result1) => {
+      if (err1) throw err1;
+      // console.log(result1[0].category);
+      if(result1.length > 0){
+        let sql2 = `SELECT * FROM blog WHERE category = '${result1[0].category}' AND not(blogId = '${result1[0].blogId}')`;
+        const query2 = db.query(sql2, (err2, result2)=>{
+          if (err2) throw err2;
+          // console.log(result2);
+          res.status(200);
+          res.send({"message": "success", "data": result2 });
+        });
+      }
+      
     });
-    console.log(query.sql);
+    console.log(sql1);
   },
 };
