@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2021 at 05:22 PM
+-- Generation Time: May 26, 2021 at 10:06 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.3.27
 
@@ -191,26 +191,6 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `register`
---
-
-CREATE TABLE `register` (
-  `name` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `register`
---
-
-INSERT INTO `register` (`name`, `email`, `password`) VALUES
-('chhaya', 'chhaya123@gmail.com', '123'),
-('sanchit', 'sanchit123@gmail.com', '456');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -238,7 +218,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`userId`, `firstName`, `lastName`, `email`, `about`, `roles`, `mobileNo`, `password`, `dob`, `isActive`, `preference`, `profileImg`, `createdAt`, `modifiedAt`) VALUES
 (1, 'Sanchit', 'Bajaj', 'sanchitbajaj02@gmail.com', 'Rodney Erickson is a content marketing professional at HubSpot, an inbound marketing and sales platform that helps companies attract visitors, convert leads, and close customers. Previously, Rodney wo', 0, 8743811303, 'sanchitbajaj', '2001-04-02', 0, 'Fitness', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_700450099-1024x682.jpg', '2021-05-18 05:50:07', NULL),
 (2, 'Kunal', 'Arora', '10kunalji@gmail.com', 'Manuel Iglesias draws from his life story when writing about the experiences of migrant workers. His first series of poems, My Father\'s Hands, appeared in The New Yorker and describes how his family c', 0, 9810362734, 'password', '2002-06-10', 0, 'Workout', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_700450099-1024x682.jpg', '2021-05-18 05:51:06', NULL),
-(3, 'Khushi', 'Arora', 'akhushi72@gmail.com', 'Debra Carroll knows that successful students become successful adults. This is her 15th year at Edison Elementary School and her 10th year teaching fourth grade. So far, fourth grade is her favorite g', 0, 8368059827, 'password', '2002-05-23', 0, 'Fitness', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2018/01/Untitled-3.jpg', '2021-05-18 05:50:26', NULL);
+(3, 'Khushi', 'Arora', 'akhushi72@gmail.com', 'Debra Carroll knows that successful students become successful adults. This is her 15th year at Edison Elementary School and her 10th year teaching fourth grade. So far, fourth grade is her favorite g', 0, 8368059827, 'password', '2002-05-23', 0, 'Fitness', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2018/01/Untitled-3.jpg', '2021-05-18 05:50:26', NULL),
+(5, 'Chhaya', 'Tyagi', 'tyagi.chhaya4@gmail.com', '', 0, 0, 'password', '0000-00-00', 0, '', '', '2021-05-26 20:02:26', NULL);
 
 --
 -- Indexes for dumped tables
@@ -340,7 +321,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `userId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

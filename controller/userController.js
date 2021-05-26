@@ -16,7 +16,7 @@ module.exports = {
       }
     }
     // check if already registered user
-    let userExists = `SELECT * FROM register WHERE email = '${registerUser.email}'`;
+    let userExists = `SELECT * FROM users WHERE email = '${registerUser.email}'`;
 
     if (!isEmail(registerUser.email)) {
       res.status(400);
@@ -32,7 +32,7 @@ module.exports = {
           res.json({ message: "User already registered" });
         } else {
 
-          let sql = `INSERT INTO register SET ?`;
+          let sql = `INSERT INTO users SET ?`;
 
           const query = db.query(sql, registerUser, (err, results) => {
             if (err) throw err;
