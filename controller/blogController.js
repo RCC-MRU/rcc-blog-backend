@@ -9,28 +9,28 @@ module.exports = {
   showAllBlogPost: async function (req, res) {
     let sql = `SELECT * FROM blog`;
 
-    let query = db.query(sql, (err, result) => {
+    const query = db.query(sql, (err, result) => {
       if (err) throw err;
 
-      res.status(200);
-      res.send({ message: "Query run successful", data: result });
+      res.status(200).json({
+        message: "Query run successful",
+        result: result,
+      });
     });
 
-    console.log("QUERY: ", query.sql);
+    console.log(query.sql);
   },
 
   // show posts by slug
-  // TODO: have to add edit this api to check with the author-details api
   showSingleBlogPost: async function (req, res) {
     let sql = `SELECT * FROM blog WHERE slug = '${req.params.slug}'`;
 
-    let query = db.query(sql, (err, result) => {
+    const query = db.query(sql, (err, result) => {
       if (err) throw err;
 
-      res.status(200);
-      res.send({
+      res.status(200).json({
         message: "Query run successfully",
-        data: result[0],
+        result: result[0],
       });
     });
 
@@ -41,10 +41,12 @@ module.exports = {
   showBlogsByCategory: async function (req, res) {
     let sql = `SELECT * FROM blog WHERE category = '${req.params.category}'`;
 
-    let query = db.query(sql, (err, result) => {
+    const query = db.query(sql, (err, result) => {
       if (err) throw err;
-      res.status(200);
-      res.send({ message: "Query run successful", data: result });
+      res.status(200).json({
+        message: "Query run successful",
+        result: result,
+      });
     });
 
     console.log(query.sql);
@@ -54,10 +56,12 @@ module.exports = {
   showPopularPosts: async function (req, res) {
     let sql = `SELECT * FROM blog ORDER BY viewCounter DESC`;
 
-    let query = db.query(sql, (err, result) => {
+    const query = db.query(sql, (err, result) => {
       if (err) throw err;
-      res.status(200);
-      res.send({ message: "Query run successful", data: result });
+      res.status(200).json({
+        message: "Query run successful",
+        result: result,
+      });
     });
 
     console.log(query.sql);
@@ -69,21 +73,26 @@ module.exports = {
 
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
-      res.status(200);
-      res.send({ message: "Query run successful", data: result });
+      res.status(200).json({
+        message: "Query run successful",
+        result: result,
+      });
     });
 
     console.log(query.sql);
   },
 
+  // show featured posts
   showFeaturedPosts: async function (req, res) {
     let sql = `SELECT * FROM blog WHERE featured = 1`;
 
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
 
-      res.status(200);
-      res.send({ message: "Query run successful", data: result });
+      res.status(200).json({
+        message: "Query run successful",
+        result: result,
+      });
     });
 
     console.log(query.sql);
@@ -96,21 +105,26 @@ module.exports = {
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
 
-      res.status(200);
-      res.send({ message: "Query run successful", data: result });
+      res.status(200).json({
+        message: "Query run successful",
+        result: result,
+      });
     });
 
     console.log(query.sql);
   },
 
+  // get the post data with category filteration
   getCategoryPost: async function (req, res) {
     let sql = `SELECT blogId, blogTitle, blogImg, blog.createdAt, category, firstName FROM users INNER JOIN blog ON users.userId = blog.userId AND blog.featured = 1`;
 
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
 
-      res.status(200);
-      res.send({ message: "Query run successful", data: result });
+      res.status(200).json({
+        message: "Query run successful",
+        result: result,
+      });
     });
     console.log(query.sql);
   },
@@ -120,17 +134,22 @@ module.exports = {
 
     const query1 = db.query(sql1, (err1, result1) => {
       if (err1) throw err1;
-      // console.log(result1[0].category);
-      if(result1.length > 0){
-        let sql2 = `SELECT * FROM blog WHERE category = '${result1[0].category}' AND not(blogId = '${result1[0].blogId}')`;
-        const query2 = db.query(sql2, (err2, result2)=>{
+
+      if (result1.length > 0) {
+        let sql2 = `SELECT * FROM blog WHERE category = '${result1[0].category}' AND NOT blogId = '${result1[0].blogId}' `;
+        const query2 = db.query(sql2, (err2, result2) => {
           if (err2) throw err2;
           // console.log(result2);
-          res.status(200);
-          res.send({"message": "success", "data": result2 });
+          res.status(200).json({
+            message: "success",
+            result: result2,
+          });
+        });
+      } else {
+        res.status(400).json({
+          message: "Bad Request",
         });
       }
-      
     });
     console.log(sql1);
   },

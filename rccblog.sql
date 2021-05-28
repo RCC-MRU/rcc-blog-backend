@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2021 at 10:06 PM
+-- Generation Time: May 28, 2021 at 12:24 PM
 -- Server version: 10.4.18-MariaDB
--- PHP Version: 7.3.27
+-- PHP Version: 8.0.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -134,7 +134,12 @@ INSERT INTO `contactus` (`contactId`, `email`, `message`, `createdAt`) VALUES
 (3, 'qwerty@gmail.com', 'this is a qwerty message', '2021-05-09 11:17:42'),
 (4, 'test1@gmail.com', 'This is a test message', '2021-05-13 10:46:27'),
 (5, 'test1', 'This is a test message', '2021-05-13 10:47:38'),
-(6, '', 'This is a test message', '2021-05-13 10:48:24');
+(6, '', 'This is a test message', '2021-05-13 10:48:24'),
+(10, 'abc@xyz.com', 'test message', '2021-05-28 08:52:14'),
+(11, 'abc@xyz.in', 'test message 12', '2021-05-28 08:55:55'),
+(12, 'lasttest@gmail.com', 'test message 13', '2021-05-28 08:57:44'),
+(13, 'lasttest@gmail2.com', 'test message 134', '2021-05-28 08:58:50'),
+(14, 'lasttest@gmail2.co', 'test message 134', '2021-05-28 09:07:23');
 
 -- --------------------------------------------------------
 
@@ -303,7 +308,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `contactus`
 --
 ALTER TABLE `contactus`
-  MODIFY `contactId` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `contactId` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
