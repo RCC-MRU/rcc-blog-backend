@@ -15,4 +15,8 @@ router.route("/login").post(Users.login);
 
 router.route("/register").post(Users.register);
 
+router.post("/forget-password", Users.forgetPass);
+
+router.post("/reset-pass/:token", Users.resetPass);
+
 module.exports = router;
