@@ -1,7 +1,7 @@
 const express = require("express");
 const db = require("../database/db");
 const jwt = require("jsonwebtoken");
-var nodemailer = require('nodemailer');
+var nodemailer = require("nodemailer");
 
 module.exports = {
   register: async function (req, res) {
@@ -92,7 +92,6 @@ module.exports = {
   },
 
   forgetPass: async function (req, res) {
-    
     let email = req.body.email;
     let sql = `SELECT * FROM users WHERE email = '${email}'`;
 
@@ -116,34 +115,36 @@ module.exports = {
         });
 
         //sending mail
-        var transporter = nodemailer.createTransport({
+        const transporter = nodemailer.createTransport({
           // host: "smtp.gmail.com",
           // port: 587,
-          service: 'gmail',
+          service: "gmail",
           auth: {
             user: process.env.EMAIL_ID,
-            pass: process.env.EMAIL_PASSWORD
-          }
+            pass: process.env.EMAIL_PASSWORD,
+          },
         });
-        
-        var mailOptions = {
+
+        const mailOptions = {
           from: process.env.EMAIL_ID,
           to: email,
-          subject: 'Reset password',
-          text: 'Click on this link to reset password http://localhost:3001/users/reset-pass/'.concat(token)
+          subject: "Reset password",
+          text: "Click on this link to reset password http://localhost:3001/users/reset-pass/".concat(
+            token
+          ),
         };
-        
-        transporter.sendMail(mailOptions, function(error, info){
+
+        transporter.sendMail(mailOptions, (error, info) => {
           if (error) {
             console.log(error);
           } else {
             let sql1 = `UPDATE users SET forgetPassToken = '${token}' , forgetTokenActive = 1 WHERE email = '${email}'`;
-            const query1 = db.query(sql1, (err1, result1)=>{
+            const query1 = db.query(sql1, (err1, result1) => {
               if (err1) throw err1;
-              console.log('Email sent: ' + info.response);
+              console.log("Email sent: " + info.response);
               console.log(token);
-            })
-            res.send({
+            });
+            res.status(200).json({
               message: "Login Successful",
               email: email,
               userId: id,
@@ -151,60 +152,51 @@ module.exports = {
           }
         });
         // res.send(jwtSecretKey);
-        
       } else {
         res.status(400);
-        res.send({ message: "Invalid credentials" });
+        res.json({ message: "Invalid credentials" });
       }
     });
     console.log(query.sql);
   },
 
-  resetPass : async function (req, res) {
-    
+  resetPass: async function (req, res) {
     let sql1 = `SELECT * FROM users WHERE forgetPassToken = '${req.params.token}'`;
     const query1 = db.query(sql1, (err1, result1) => {
-      if(err1) throw err1;
-      
-      if(result1.length){
-      if(result1[0].forgetTokenActive == 1){
-      jwt.verify(req.params.token, process.env.JWT_SECRET_KEY, (jwtErr, decoded) => {
+      if (err1) throw err1;
 
-        if(jwtErr) throw jwtErr;
+      if (result1.length) {
+        if (result1[0].forgetTokenActive == 1) {
+          jwt.verify(
+            req.params.token,
+            process.env.JWT_SECRET_KEY,
+            (jwtErr, decoded) => {
+              if (jwtErr) throw jwtErr;
 
-        const userId = decoded.userId;
-        if(userId == result1[0].userId){
-
-          let sql2 = `UPDATE users SET password=${req.params.password} , forgetTokenActive = 0 WHERE userId=${result1[0].userId}`;
-          const query2 = db.query(sql2, (err2, result2) => {
-
-            res.status(200);
-            res.send({
-            message: "password changed successfully"
+              const userId = decoded.userId;
+              if (userId == result1[0].userId) {
+                let sql2 = `UPDATE users SET password=${req.params.password} , forgetTokenActive = 0 WHERE userId=${result1[0].userId}`;
+                const query2 = db.query(sql2, (err2, result2) => {
+                  res.status(200);
+                  res.send({
+                    message: "password changed successfully",
+                  });
+                });
+              }
+            }
+          );
+        } else {
+          res.status(404);
+          res.send({
+            message: "Token used already",
           });
-        });
         }
-    
-      });
-      
-    }
-    else{
-      res.status(404);
-    res.send({
-      message: "Token used already"
+      } else {
+        res.status(404);
+        res.send({
+          message: "Invalid token",
+        });
+      }
     });
-    }
-    
-  }
-  else{
-    res.status(404);
-    res.send({
-      message: "Invalid token"
-    });
-  }
-    });
-    
-
-  }
-}
-
+  },
+};
