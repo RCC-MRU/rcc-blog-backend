@@ -26,7 +26,7 @@ db.connect((err) => {
 
 // api route
 const apiRouter = require("./routes/api");
-app.use("/routes", apiRouter);
+app.use("/apis", apiRouter);
 
 // blogs route
 const blogRouter = require("./routes/blog");
@@ -38,7 +38,7 @@ app.use("/users", userRouter);
 
 //verify
 const jwtmiddleware = require("./middleware/jwtMiddleware");
-app.use("/test", jwtmiddleware.verify, function(req, res) {
+app.use("/test", jwtmiddleware.verify, function (req, res) {
   console.log("User Testing");
 });
 // root route

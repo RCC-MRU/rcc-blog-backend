@@ -29,4 +29,4 @@ Open http://localhost:3001 to view it in the browser.
 
 ><a href="./resources/API.md">API List</a>
 
-><a href="./resources/DOCS">Documentation</a>
+><a href="./resources/DOCS.md">Documentation</a>

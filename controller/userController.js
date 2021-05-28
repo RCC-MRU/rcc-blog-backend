@@ -2,7 +2,6 @@ const express = require("express");
 const db = require("../database/db");
 const jwt = require("jsonwebtoken");
 
-
 module.exports = {
   register: async function (req, res) {
     let registerUser = req.body;
@@ -19,8 +18,9 @@ module.exports = {
     let userExists = `SELECT * FROM users WHERE email = '${registerUser.email}'`;
 
     if (!isEmail(registerUser.email)) {
-      res.status(400);
-      res.send({ message: "Email entered is invalid" });
+      res.status(400).json({
+        message: "Email entered is invalid",
+      });
     } else {
       const check = db.query(userExists, (err, result1) => {
         if (err) throw err;
@@ -28,10 +28,10 @@ module.exports = {
         const isEntryInTable = result1.length;
 
         if (isEntryInTable) {
-          res.status(400);
-          res.json({ message: "User already registered" });
+          res.status(400).json({
+            message: "User already registered",
+          });
         } else {
-
           let sql = `INSERT INTO users SET ?`;
 
           const query = db.query(sql, registerUser, (err, results) => {
@@ -43,9 +43,11 @@ module.exports = {
             });
           });
         }
-      })
+      });
+      console.log(check.sql);
     }
   },
+
   login: async function (req, res) {
     // Validate User Here
     let userData = req.body;
@@ -59,6 +61,7 @@ module.exports = {
       if (userExists) {
         const jwtSecretKey = process.env.JWT_SECRET_KEY;
 
+        let name = result[0].firstName;
         // let id = JSON.stringify(result[0].userId);
         let id = result[0].userId;
 
@@ -71,18 +74,19 @@ module.exports = {
           expiresIn: "1h",
         });
         // res.send(jwtSecretKey);
-        res.send({
+        res.status(200).json({
           message: "Login Successful",
           email: userData.email,
+          firstName: name,
           userId: id,
           token: token,
         });
       } else {
-        res.status(400);
-        res.send({ message: "Invalid credentials" });
+        res.status(400).json({
+          message: "Invalid credentials",
+        });
       }
     });
     console.log(query.sql);
-  }
-}
-
+  },
+};
