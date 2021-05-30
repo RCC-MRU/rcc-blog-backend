@@ -21,7 +21,7 @@ module.exports = {
       res.status(400).json({
         message: "Email entered is invalid",
       });
-      throw new Error("Email entered is invalid");
+      // throw new Error("Email entered is invalid");
     } else {
       const check = db.query(userExists, (err, result1) => {
         if (err) throw err;
@@ -32,7 +32,7 @@ module.exports = {
           res.status(400).json({
             message: "User already exists",
           });
-          throw new Error("User already exists");
+          // throw new Error("User already exists");
         } else {
           // if user does not exist in the database then this block will run
 
