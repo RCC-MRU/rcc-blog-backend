@@ -40,7 +40,7 @@ module.exports = {
 
             res.status(200).json({
               message: "user registered successfully",
-              data: results,
+              result: results,
             });
           });
         }
@@ -145,7 +145,7 @@ module.exports = {
               console.log(token);
             });
             res.status(200).json({
-              message: "Login Successful",
+              message: "Email sent Succesfully",
               email: email,
               userId: id,
             });
