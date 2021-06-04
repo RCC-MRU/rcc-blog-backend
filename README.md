@@ -13,11 +13,18 @@ git clone https://github.com/Sanchitbajaj02/Blog-Project-Node.git
 cd blog-project-node
 ```
 
-- Run the following project
+- Run the following project in development mode
 ```
-npm install --save
+npm install
+npm run dev
+```
+
+- Run the following project in production mode
+```
+npm install
 npm start
 ```
+
 - Follow this procedure after every pull request
   - check the Documentation
   - open Xampp and delete the old database
