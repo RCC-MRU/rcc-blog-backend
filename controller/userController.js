@@ -128,10 +128,8 @@ module.exports = {
         const mailOptions = {
           from: process.env.EMAIL_ID,
           to: email,
-          subject: "Reset password",
-          text: "Click on this link to reset password http://localhost:3001/users/reset-pass/".concat(
-            token
-          ),
+          subject: "Health & Fitness - Reset Password Notification",
+          text: "Click on this link to reset password \n\n http://localhost:3001/users/reset-pass/".concat(token),
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
@@ -143,12 +141,14 @@ module.exports = {
               if (err1) throw err1;
               console.log("Email sent: " + info.response);
               console.log(token);
+
+              res.status(200).json({
+                message: "Email sent Succesfully",
+                email: email,
+                userId: id,
+              });
             });
-            res.status(200).json({
-              message: "Email sent Succesfully",
-              email: email,
-              userId: id,
-            });
+            console.log(query1.sql);
           }
         });
         // res.send(jwtSecretKey);
@@ -165,8 +165,8 @@ module.exports = {
     const query1 = db.query(sql1, (err1, result1) => {
       if (err1) throw err1;
 
-      if (result1.length) {
-        if (result1[0].forgetTokenActive == 1) {
+      if (result1.length > 0) {
+        if (result1[0].forgetTokenActive === 1) {
           jwt.verify(
             req.params.token,
             process.env.JWT_SECRET_KEY,
@@ -175,13 +175,18 @@ module.exports = {
 
               const userId = decoded.userId;
               if (userId == result1[0].userId) {
-                let sql2 = `UPDATE users SET password=${req.params.password} , forgetTokenActive = 0 WHERE userId=${result1[0].userId}`;
+                let sql2 = `UPDATE users SET password='${req.body.password}', forgetPassToken=NULL, forgetTokenActive=0 WHERE userId='${result1[0].userId}'`;
                 const query2 = db.query(sql2, (err2, result2) => {
+                  if (err2) throw err2;
+
+                  console.log("Update response, Line 184", result2);
+
                   res.status(200);
                   res.send({
                     message: "password changed successfully",
                   });
                 });
+                console.log(query2.sql);
               }
             }
           );
@@ -198,5 +203,6 @@ module.exports = {
         });
       }
     });
+    console.log(query1.sql);
   },
 };
