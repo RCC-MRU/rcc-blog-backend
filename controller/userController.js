@@ -175,7 +175,7 @@ module.exports = {
 
               const userId = decoded.userId;
               if (userId == result1[0].userId) {
-                let sql2 = `UPDATE users SET password='${req.body.password}', forgetPassToken=NULL, forgetTokenActive=0 WHERE userId='${result1[0].userId}'`;
+                let sql2 = `UPDATE users SET password='${req.body.password}', forgetTokenActive=0 WHERE userId='${result1[0].userId}'`;
                 const query2 = db.query(sql2, (err2, result2) => {
                   if (err2) throw err2;
 
