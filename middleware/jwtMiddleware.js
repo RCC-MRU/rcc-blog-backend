@@ -3,7 +3,7 @@ jwt = require("jsonwebtoken");
 
 dotenv.config({ path: "../.env" });
 module.exports = {
-  verify: async function (req, res, error, next) {
+  jwtVerification: async function (req, res, error, next) {
     // let tokenHeaderKey = process.env.TOKEN_HEADER_KEY;
     let jwtSecretKey = process.env.JWT_SECRET_KEY;
 

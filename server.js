@@ -41,9 +41,10 @@ app.use("/users", userRouter);
 
 //verify
 const jwtmiddleware = require("./middleware/jwtMiddleware");
-app.use("/test", jwtmiddleware.verify, function (req, res) {
+app.use("/test", jwtmiddleware.jwtVerification, function (req, res) {
   console.log("User Testing");
 });
+
 // root route
 app.use("*", (req, res) => {
   res.status(200);
