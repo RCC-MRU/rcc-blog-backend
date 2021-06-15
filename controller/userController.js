@@ -1,7 +1,9 @@
 const express = require("express");
 const db = require("../database/db");
 const jwt = require("jsonwebtoken");
-var nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
+
+const tokenMiddleware = require("../middleware/token");
 
 module.exports = {
   register: async function (req, res) {
@@ -59,27 +61,19 @@ module.exports = {
       if (err) throw err;
       let userExists = result.length;
       // console.log(userExists);
-      if (userExists) {
-        const jwtSecretKey = process.env.JWT_SECRET_KEY;
+      if (userExists > 0) {
+        let resultName = result[0].firstName;
+        let resultEmail = result[0].email;
+        let resultID = result[0].userId;
 
-        let name = result[0].firstName;
-        // let id = JSON.stringify(result[0].userId);
-        let id = result[0].userId;
+        const token = tokenMiddleware.generateToken(resultID);
 
-        let data = {
-          time: Date(),
-          userId: id,
-        };
-
-        const token = jwt.sign(data, jwtSecretKey, {
-          expiresIn: "1h",
-        });
         // res.send(jwtSecretKey);
         res.status(200).json({
           message: "Login Successful",
-          email: userData.email,
-          firstName: name,
-          userId: id,
+          email: resultEmail,
+          firstName: resultName,
+          userId: resultID,
           token: token,
         });
       } else {
@@ -99,20 +93,9 @@ module.exports = {
       if (err) throw err;
       let userExists = result.length;
       // console.log(userExists);
-      if (userExists) {
-        const jwtSecretKey = process.env.JWT_SECRET_KEY;
-
-        // let id = JSON.stringify(result[0].userId);
-        let id = result[0].userId;
-
-        let data = {
-          time: Date(),
-          userId: id,
-        };
-
-        const token = jwt.sign(data, jwtSecretKey, {
-          expiresIn: "1h",
-        });
+      if (userExists > 0) {
+        let resultID = result[0].userId;
+        let token = tokenMiddleware.generateToken(resultID);
 
         //sending mail
         const transporter = nodemailer.createTransport({
@@ -125,11 +108,17 @@ module.exports = {
           },
         });
 
+        // text: "Click on this link to reset password \n\n http://localhost:3001/users/reset-pass/".concat(
+        //   token
+        // ),
+
         const mailOptions = {
           from: process.env.EMAIL_ID,
           to: email,
           subject: "Health & Fitness - Reset Password Notification",
-          text: "Click on this link to reset password \n\n http://localhost:3001/users/reset-pass/".concat(token),
+          text: "Click on this link to reset password \n\n http://localhost:3000/resetPassword/".concat(
+            token
+          ),
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
@@ -145,7 +134,7 @@ module.exports = {
               res.status(200).json({
                 message: "Email sent Succesfully",
                 email: email,
-                userId: id,
+                userId: resultID,
               });
             });
             console.log(query1.sql);
