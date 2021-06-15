@@ -40,8 +40,8 @@ const userRouter = require("./routes/user");
 app.use("/users", userRouter);
 
 //verify
-const jwtmiddleware = require("./middleware/jwtMiddleware");
-app.use("/test", jwtmiddleware.jwtVerification, function (req, res) {
+const tokenMiddleware = require("./middleware/token");
+app.use("/test", tokenMiddleware.jwtVerification, (req, res) => {
   console.log("User Testing");
 });
 
