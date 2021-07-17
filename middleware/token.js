@@ -28,14 +28,8 @@ function jwtVerification(req, res, next) {
   }
 
   jwt.verify(token, jwtSecretKey, (err, result) => {
-    if (err)
-      return res.status(403).json({
-        message: "Error verifying token",
-      });
-
-    res.json({
-      message: "Token Verified",
-    });
+    if (err) throw err;
+    req.result = result;
     next();
   });
 }

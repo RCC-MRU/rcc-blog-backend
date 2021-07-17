@@ -26,6 +26,7 @@ db.connect((err) => {
   }
   console.log("MYSQL database connected");
 });
+const tokenMiddleware = require("./middleware/token");
 
 // api route
 const apiRouter = require("./routes/api");
@@ -40,10 +41,9 @@ const userRouter = require("./routes/user");
 app.use("/users", userRouter);
 
 //verify
-const tokenMiddleware = require("./middleware/token");
-app.use("/test", tokenMiddleware.jwtVerification, (req, res) => {
-  console.log("User Testing");
-});
+// app.use("/test", tokenMiddleware.jwtVerification, (req, res) => {
+//   console.log("User Testing");
+// });
 
 // root route
 app.use("*", (req, res) => {
