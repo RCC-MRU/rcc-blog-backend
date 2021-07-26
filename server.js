@@ -1,9 +1,5 @@
-// Declaration of production environment
-if (process.env.NODE_ENV !== "production") {
-  // For Environment variables
-  const dotenv = require("dotenv");
-  dotenv.config();
-}
+const dotenv = require("dotenv");
+dotenv.config();
 
 const express = require("express");
 const app = express();
