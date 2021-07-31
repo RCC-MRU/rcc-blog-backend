@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2021 at 05:04 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.26
+-- Generation Time: Jun 09, 2021 at 07:54 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `blog`
 --
 
@@ -191,6 +192,8 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+=======
+>>>>>>> master
 -- Table structure for table `users`
 --
 
@@ -218,73 +221,41 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userId`, `firstName`, `lastName`, `email`, `about`, `roles`, `mobileNo`, `password`, `forgetPassToken`, `forgetTokenActive`, `dob`, `isActive`, `preference`, `profileImg`, `createdAt`, `modifiedAt`) VALUES
+<<<<<<< HEAD
 (1, 'Sanchit', 'Bajaj', 'sanchitbajaj02@gmail.com', 'Rodney Erickson is a content marketing professional at HubSpot, an inbound marketing and sales platform that helps companies attract visitors, convert leads, and close customers. Previously, Rodney wo', 0, 8743811303, 'sanchitbajaj', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiRnJpIE1heSAyOCAyMDIxIDE5OjIyOjA4IEdNVCswNTMwIChJbmRpYSBTdGFuZGFyZCBUaW1lKSIsInVzZXJJZCI6MSwiaWF0IjoxNjIyMjA5OTI4LCJleHAiOjE2MjIyMTM1Mjh9.q5sSh3CWaWFd2908-k5JmLsdgnWI8MmUjh9YqW86wIY', 1, '2001-04-02', 0, 'Fitness', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_700450099-1024x682.jpg', '2021-05-28 13:52:11', NULL),
 (2, 'Kunal', 'Arora', '10kunalji@gmail.com', 'Manuel Iglesias draws from his life story when writing about the experiences of migrant workers. His first series of poems, My Father\'s Hands, appeared in The New Yorker and describes how his family c', 0, 9810362734, 'password', '', 0, '2002-06-10', 0, 'Workout', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_700450099-1024x682.jpg', '2021-05-18 05:51:06', NULL),
 (3, 'Khushi', 'Arora', 'akhushi72@gmail.com', 'Debra Carroll knows that successful students become successful adults. This is her 15th year at Edison Elementary School and her 10th year teaching fourth grade. So far, fourth grade is her favorite g', 0, 8368059827, 'password', '', 0, '2002-05-23', 0, 'Fitness', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2018/01/Untitled-3.jpg', '2021-05-18 05:50:26', NULL),
 (5, 'Chhaya', 'Tyagi', 'tyagi.chhaya4@gmail.com', '', 0, 0, 'password', '', 0, '0000-00-00', 0, '', '', '2021-05-26 20:02:26', NULL),
 (6, 'Vansh', 'Bisht', 'vanshbishtmru@gmail.com', 'NA', 1, 8447533975, 'undefined', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiRnJpIE1heSAyOCAyMDIxIDE5OjIxOjQ4IEdNVCswNTMwIChJbmRpYSBTdGFuZGFyZCBUaW1lKSIsInVzZXJJZCI6NiwiaWF0IjoxNjIyMjA5OTA4LCJleHAiOjE2MjIyMTM1MDh9.adsMyrrclRpUoileLWC4Om3CREqdlXGnN2cG_HBc6KY', 1, '2002-07-07', 0, '', '', '2021-05-28 13:57:36', NULL);
+=======
+(1, 'Sanchit', 'Bajaj', 'sanchitbajaj02@gmail.com', 'Rodney Erickson is a content marketing professional at HubSpot, an inbound marketing and sales platform that helps companies attract visitors, convert leads, and close customers. Previously, Rodney wo', 0, 8743811303, 'passpass', '', 0, '2001-04-02', 0, 'Fitness', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_700450099-1024x682.jpg', '2021-06-09 05:42:36', NULL),
+(2, 'Kunal', 'Arora', '10kunalji@gmail.com', 'Manuel Iglesias draws from his life story when writing about the experiences of migrant workers. His first series of poems, My Father\'s Hands, appeared in The New Yorker and describes how his family c', 0, 9810362734, 'password', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiRnJpIEp1biAwNCAyMDIxIDE5OjUwOjMzIEdNVCswNTMwIChJbmRpYSBTdGFuZGFyZCBUaW1lKSIsInVzZXJJZCI6MiwiaWF0IjoxNjIyODE2NDMzLCJleHAiOjE2MjI4MjAwMzN9._oLnKFkLYl02gEWcknOgKl3XFnzpnvyCArl6z44YCHI', 1, '2002-06-10', 0, 'Workout', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2016/05/shutterstock_700450099-1024x682.jpg', '2021-06-04 14:20:37', NULL),
+(3, 'Khushi', 'Arora', 'akhushi72@gmail.com', 'Debra Carroll knows that successful students become successful adults. This is her 15th year at Edison Elementary School and her 10th year teaching fourth grade. So far, fourth grade is her favorite g', 0, 8368059827, 'password', '', 0, '2002-05-23', 0, 'Fitness', 'https://cheerup.theme-sphere.com/fitness/wp-content/uploads/sites/11/2018/01/Untitled-3.jpg', '2021-05-18 05:50:26', NULL),
+(5, 'Chhaya', 'Tyagi', 'tyagi.chhaya4@gmail.com', '', 0, 0, 'password', '', 0, '0000-00-00', 0, '', '', '2021-05-26 20:02:26', NULL),
+(6, 'Vansh', 'Bisht', 'vanshbishtmru@gmail.com', 'NA', 1, 8447533975, 'undefined', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiRnJpIE1heSAyOCAyMDIxIDE5OjIxOjQ4IEdNVCswNTMwIChJbmRpYSBTdGFuZGFyZCBUaW1lKSIsInVzZXJJZCI6NiwiaWF0IjoxNjIyMjA5OTA4LCJleHAiOjE2MjIyMTM1MDh9.adsMyrrclRpUoileLWC4Om3CREqdlXGnN2cG_HBc6KY', 1, '2002-07-07', 0, '', '', '2021-05-28 13:57:36', NULL),
+(10, 'Kunal', 'Arora', 'itskunal00@gmail.com', '', 0, 0, '123456789', '', 0, '0000-00-00', 0, 'Fitness', '', '2021-06-04 13:46:38', NULL),
+(12, 'qwerty', 'qwerty', 'ciais2020.mru@gmail.com', '', 0, 0, '12345', '', 0, '0000-00-00', 0, 'Workout', '', '2021-06-07 12:10:14', NULL),
+(13, 'hacker', 'linux', 'hacker@linux.com', '', 0, 0, 'password123', '', 0, '0000-00-00', 0, 'Workout', '', '2021-06-07 12:18:38', NULL),
+(14, 'cccsdc', 'cdscsd', 'sanchit02@outlook.com', '', 0, 0, 'csdcds', '', 0, '0000-00-00', 0, 'Workout', '', '2021-06-07 12:24:31', NULL);
+>>>>>>> master
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `blog`
---
-ALTER TABLE `blog`
-  ADD PRIMARY KEY (`blogId`);
-
---
--- Indexes for table `category_master`
---
-ALTER TABLE `category_master`
-  ADD PRIMARY KEY (`categoryId`);
-
---
--- Indexes for table `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`commentId`),
-  ADD UNIQUE KEY `comments_commentid_unique` (`commentId`);
-
---
--- Indexes for table `contactus`
---
-ALTER TABLE `contactus`
-  ADD PRIMARY KEY (`contactId`);
-
---
--- Indexes for table `failed_jobs`
---
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uid`);
-
---
--- Indexes for table `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`userId`),
-  ADD UNIQUE KEY `users_email_unique` (`email`),
-  ADD UNIQUE KEY `users_mobileno_unique` (`mobileNo`);
+  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
@@ -325,6 +296,12 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `users`
   MODIFY `userId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+=======
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `userId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+>>>>>>> master
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

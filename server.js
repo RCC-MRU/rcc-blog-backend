@@ -1,11 +1,14 @@
+// Declaration of production environment
+if (process.env.NODE_ENV !== "production") {
+  // For Environment variables
+  const dotenv = require("dotenv");
+  dotenv.config();
+}
+
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const cors = require("cors");
-
-// For Environment variables
-const dotenv = require("dotenv");
-dotenv.config();
 
 const port = process.env.PORT || 3000;
 
@@ -38,9 +41,10 @@ app.use("/users", userRouter);
 
 //verify
 const jwtmiddleware = require("./middleware/jwtMiddleware");
-app.use("/test", jwtmiddleware.verify, function (req, res) {
+app.use("/test", jwtmiddleware.jwtVerification, function (req, res) {
   console.log("User Testing");
 });
+
 // root route
 app.use("*", (req, res) => {
   res.status(200);
