@@ -23,7 +23,7 @@ module.exports = {
 
   // show posts by slug
   showSingleBlogPost: async function (req, res) {
-    let sql = `SELECT * FROM blog WHERE slug = '${req.params.slug}'`;
+    let sql = `SELECT * FROM blog WHERE slug = '${req.params.slug}' AND visibility='1'`;
 
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
@@ -84,7 +84,7 @@ module.exports = {
 
   // show featured posts
   showFeaturedPosts: async function (req, res) {
-    let sql = `SELECT * FROM blog WHERE featured = 1`;
+    let sql = `SELECT * FROM blog WHERE featured='1' AND visibility='1' `;
 
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
@@ -130,13 +130,13 @@ module.exports = {
   },
 
   showSimilarPosts: async function (req, res) {
-    let sql1 = `SELECT * FROM blog WHERE slug = '${req.params.slug}'`;
+    let sql1 = `SELECT * FROM blog WHERE slug = '${req.params.slug}' AND visibility='1' `;
 
     const query1 = db.query(sql1, (err1, result1) => {
       if (err1) throw err1;
 
       if (result1.length > 0) {
-        let sql2 = `SELECT * FROM blog WHERE category = '${result1[0].category}' AND NOT blogId = '${result1[0].blogId}' `;
+        let sql2 = `SELECT * FROM blog WHERE category = '${result1[0].category}' AND NOT blogId = '${result1[0].blogId}' AND visibility='1' `;
         const query2 = db.query(sql2, (err2, result2) => {
           if (err2) throw err2;
           // console.log(result2);
