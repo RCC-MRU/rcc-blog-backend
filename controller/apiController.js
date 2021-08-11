@@ -54,7 +54,7 @@ module.exports = {
 
   //show Comments
   showComments: async function (req, res) {
-    let sql = `SELECT * FROM comments`;
+    let sql = `SELECT C.commentId, C.comment, C.author, C.createdAt, FROM comments C INNER JOIN blog B WHERE B.slug='${req.params.slug}' AND B.blogId = C.blogId `;
 
     const query = db.query(sql, (err, result) => {
       if (err) throw err;
