@@ -8,7 +8,7 @@ const Api = require("../controller/apiController");
 router.post("/contact", Api.contactUs);
 
 // show comments
-router.get("/showcomments/:slug", Api.showComments);
+router.get("/showComments/:slug", Api.showComments);
 
 //About Author information
 // FIXME: make connection of this api with getSingleBlogPost
