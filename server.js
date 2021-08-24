@@ -1,9 +1,5 @@
-// Declaration of production environment
-if (process.env.NODE_ENV !== "production") {
-  // For Environment variables
-  const dotenv = require("dotenv");
-  dotenv.config();
-}
+const dotenv = require("dotenv");
+dotenv.config();
 
 const express = require("express");
 const app = express();
@@ -26,6 +22,7 @@ db.connect((err) => {
   }
   console.log("MYSQL database connected");
 });
+const tokenMiddleware = require("./middleware/token");
 
 // api route
 const apiRouter = require("./routes/api");
@@ -40,10 +37,10 @@ const userRouter = require("./routes/user");
 app.use("/users", userRouter);
 
 //verify
-const jwtmiddleware = require("./middleware/jwtMiddleware");
-app.use("/test", jwtmiddleware.verify, function (req, res) {
-  console.log("User Testing");
-});
+// app.use("/test", tokenMiddleware.jwtVerification, (req, res) => {
+//   console.log("User Testing");
+// });
+
 // root route
 app.use("*", (req, res) => {
   res.status(200);

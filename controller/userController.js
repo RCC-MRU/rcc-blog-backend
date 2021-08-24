@@ -1,7 +1,9 @@
 const express = require("express");
 const db = require("../database/db");
 const jwt = require("jsonwebtoken");
-var nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
+
+const tokenMiddleware = require("../middleware/token");
 
 module.exports = {
   register: async function (req, res) {
@@ -40,7 +42,7 @@ module.exports = {
 
             res.status(200).json({
               message: "user registered successfully",
-              data: results,
+              result: results,
             });
           });
         }
@@ -59,27 +61,19 @@ module.exports = {
       if (err) throw err;
       let userExists = result.length;
       // console.log(userExists);
-      if (userExists) {
-        const jwtSecretKey = process.env.JWT_SECRET_KEY;
+      if (userExists > 0) {
+        let resultName = result[0].firstName;
+        let resultEmail = result[0].email;
+        let resultID = result[0].userId;
 
-        let name = result[0].firstName;
-        // let id = JSON.stringify(result[0].userId);
-        let id = result[0].userId;
+        const token = tokenMiddleware.generateToken(resultID);
 
-        let data = {
-          time: Date(),
-          userId: id,
-        };
-
-        const token = jwt.sign(data, jwtSecretKey, {
-          expiresIn: "1h",
-        });
         // res.send(jwtSecretKey);
         res.status(200).json({
           message: "Login Successful",
-          email: userData.email,
-          firstName: name,
-          userId: id,
+          email: resultEmail,
+          firstName: resultName,
+          userId: resultID,
           token: token,
         });
       } else {
@@ -99,20 +93,9 @@ module.exports = {
       if (err) throw err;
       let userExists = result.length;
       // console.log(userExists);
-      if (userExists) {
-        const jwtSecretKey = process.env.JWT_SECRET_KEY;
-
-        // let id = JSON.stringify(result[0].userId);
-        let id = result[0].userId;
-
-        let data = {
-          time: Date(),
-          userId: id,
-        };
-
-        const token = jwt.sign(data, jwtSecretKey, {
-          expiresIn: "1h",
-        });
+      if (userExists > 0) {
+        let resultID = result[0].userId;
+        let token = tokenMiddleware.generateToken(resultID);
 
         //sending mail
         const transporter = nodemailer.createTransport({
@@ -125,11 +108,15 @@ module.exports = {
           },
         });
 
+        // text: "Click on this link to reset password \n\n http://localhost:3001/users/reset-pass/".concat(
+        //   token
+        // ),
+
         const mailOptions = {
           from: process.env.EMAIL_ID,
           to: email,
-          subject: "Reset password",
-          text: "Click on this link to reset password http://localhost:3001/users/reset-pass/".concat(
+          subject: "Health & Fitness - Reset Password Notification",
+          text: "Click on this link to reset password \n\n http://localhost:3000/resetPassword/".concat(
             token
           ),
         };
@@ -143,12 +130,14 @@ module.exports = {
               if (err1) throw err1;
               console.log("Email sent: " + info.response);
               console.log(token);
+
+              res.status(200).json({
+                message: "Email sent Succesfully",
+                email: email,
+                userId: resultID,
+              });
             });
-            res.status(200).json({
-              message: "Login Successful",
-              email: email,
-              userId: id,
-            });
+            console.log(query1.sql);
           }
         });
         // res.send(jwtSecretKey);
@@ -165,8 +154,8 @@ module.exports = {
     const query1 = db.query(sql1, (err1, result1) => {
       if (err1) throw err1;
 
-      if (result1.length) {
-        if (result1[0].forgetTokenActive == 1) {
+      if (result1.length > 0) {
+        if (result1[0].forgetTokenActive === 1) {
           jwt.verify(
             req.params.token,
             process.env.JWT_SECRET_KEY,
@@ -175,13 +164,18 @@ module.exports = {
 
               const userId = decoded.userId;
               if (userId == result1[0].userId) {
-                let sql2 = `UPDATE users SET password=${req.params.password} , forgetTokenActive = 0 WHERE userId=${result1[0].userId}`;
+                let sql2 = `UPDATE users SET password='${req.body.password}', forgetTokenActive=0 WHERE userId='${result1[0].userId}'`;
                 const query2 = db.query(sql2, (err2, result2) => {
+                  if (err2) throw err2;
+
+                  console.log("Update response, Line 184", result2);
+
                   res.status(200);
                   res.send({
                     message: "password changed successfully",
                   });
                 });
+                console.log(query2.sql);
               }
             }
           );
@@ -198,5 +192,6 @@ module.exports = {
         });
       }
     });
+    console.log(query1.sql);
   },
 };
