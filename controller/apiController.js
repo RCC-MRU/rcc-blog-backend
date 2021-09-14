@@ -67,6 +67,47 @@ module.exports = {
     console.log(query.sql);
   },
 
+  // add comment
+  addComment: async function (req, res) {
+    let blogDataQuery = `SELECT userId, blogId FROM blog WHERE slug = '${req.params.blogSlug}'`;
+
+    db.query(blogDataQuery, (err, blogDataResult) => {
+      if (err) throw err;
+
+      const userId = blogDataResult[0].userId;
+      const blogId = blogDataResult[0].blogId;
+
+      let commentAuthorNameQuery = `SELECT firstname, lastname FROM users WHERE userId = '${req.result.userId}' `;
+
+      db.query(commentAuthorNameQuery, (err, commentAuthorNameResult) => {
+        if (err) throw err;
+
+        let comment = req.body.comment;
+
+        const author = `${commentAuthorNameResult[0].firstname} ${commentAuthorNameResult[0].lastname}`;
+
+        let commentData = {
+          userId: userId,
+          blogId: blogId,
+          comment: comment,
+          author: author,
+          visibility: 1,
+        };
+
+        let sql = `INSERT INTO comments SET ?`;
+
+        db.query(sql, commentData, (err, result) => {
+          if (err) throw err;
+
+          res.status(200).json({
+            message: "Comment added successfully",
+            result: result,
+          });
+        });
+      });
+    });
+  },
+
   //Author Information
   showAuthor: async function (req, res) {
     let sql = `SELECT * FROM users WHERE userId = '${req.params.userId}'`;
