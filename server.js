@@ -36,10 +36,11 @@ app.use("/blogs", blogRouter);
 const userRouter = require("./routes/user");
 app.use("/users", userRouter);
 
-//verify
-// app.use("/test", tokenMiddleware.jwtVerification, (req, res) => {
-//   console.log("User Testing");
-// });
+// verify;
+app.get("/test", tokenMiddleware.jwtVerification, (req, res) => {
+  console.log("User Testing");
+  res.send("Success");
+});
 
 // root route
 app.use("*", (req, res) => {
