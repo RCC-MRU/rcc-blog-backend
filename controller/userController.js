@@ -76,6 +76,7 @@ module.exports = {
           userId: resultID,
           token: token,
         });
+        console.log(token);
       } else {
         res.status(400).json({
           message: "Invalid credentials",

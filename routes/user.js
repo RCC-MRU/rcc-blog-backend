@@ -1,7 +1,7 @@
 // having login and signup apis
 
 const express = require("express");
-const router = express.Router();
+const   router = express.Router();
 const db = require("../database/db");
 const jwt = require("jsonwebtoken");
 

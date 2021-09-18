@@ -81,4 +81,23 @@ module.exports = {
     });
     console.log(query.sql);
   },
+  addComment: async function (req, res) {
+    let search = `SELECT * FROM users WHERE userId = ${req.header.token.userId}`
+    const query1 = db.query(search, (err, result1) => {
+      if (err) throw err;
+      let name = result1.firstName
+      let sql = `INSERT INTO comments SET userId = ${req.header.token.userId}, blogId = ${req.params.id}, comment = ${req.body.comment}, author = ${name}, visibility = 1`;
+
+    const query = db.query(sql, (err1, result) => {
+      if (err1) throw err1;
+
+      res.status(200).json({
+        message: "Comment added successfully ",
+        result: result,
+      });
+    });
+    });
+    
+    console.log(query.sql);
+  },
 };
