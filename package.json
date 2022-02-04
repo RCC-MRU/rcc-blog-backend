@@ -19,7 +19,7 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "nodemailer": "^6.6.1"
+    "nodemailer": "^6.7.2"
   },
   "devDependencies": {
     "dotenv": "^9.0.2",
