@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const port = process.env.PORT || 3000;
+const host = process.env.HOSTNAME || "localhost";
 
 // middlewares
 app.use(express.urlencoded({ extended: true }));
@@ -50,6 +51,6 @@ app.use("*", (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+app.listen(port, host, () => {
+  console.log(`Server is running at http://${host}:${port}`);
 });
