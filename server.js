@@ -7,7 +7,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const port = process.env.PORT || 3000;
-const host = process.env.HOSTNAME || "localhost";
+const host = "localhost";
 
 // middlewares
 app.use(express.urlencoded({ extended: true }));
